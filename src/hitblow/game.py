@@ -14,7 +14,11 @@ def play(digits=3):
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
-
+    from .ai_battle import play_vs_ai
+    if input("AIと対戦しますか？ (y/n) > ").strip().lower() == 'y':
+        play_vs_ai(secret, digits)
+        return
+    
     tries = 0
     while True:
         guess = input("予想 > ").strip()
