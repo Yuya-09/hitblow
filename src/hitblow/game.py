@@ -16,6 +16,13 @@ def play(digits=3):
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
+
+    custom_digits = input("何桁で遊びますか？（例: 3, 4, 5 / そのままEnterでスキップ）> ").strip()
+    if custom_digits.isdigit() and 1 <= int(custom_digits) <= 10:
+        digits = int(custom_digits)
+        secret = make_secret(digits)  # 指定された桁数で答え（secret）を作り直す
+        print(f"【設定完了】 {digits} 桁で開始します！")
+        
     from .ai_battle import play_vs_ai
     if input("AIと対戦しますか？ (y/n) > ").strip().lower() == 'y':
         play_vs_ai(secret, digits)
