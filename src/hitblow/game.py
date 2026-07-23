@@ -12,7 +12,6 @@ from .core import judge, make_secret
 def play(digits=3):
     secret = make_secret(digits)
     hint_count = 0
-    max_hints = digits
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
@@ -22,14 +21,17 @@ def play(digits=3):
         digits = int(custom_digits)
         secret = make_secret(digits)  # 指定された桁数で答え（secret）を作り直す
         print(f"【設定完了】 {digits} 桁で開始します！")
+    max_hints = digits
         
     from .ai_battle import play_vs_ai
     if input("AIと対戦しますか？ (y/n) > ").strip().lower() == 'y':
         play_vs_ai(secret, digits)
         return
     
-    print("ヒントの説明: hint 数字 と入力すると、正解がその数字より大きいか小さいか分かります。")
+    print("ヒントの説明: 「hint 数字」 と入力すると、正解がその数字より大きいか小さいか分かります。")
     tries = 0
+    from playtime import start, elapsed
+    start()
     while True:
         guess = input("予想 > ").strip()
 
@@ -63,5 +65,6 @@ def play(digits=3):
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
 
             print(f"正解！ {tries} 回で当たり（答え {secret}）")
+            print(f"プレイ時間：{elapsed()}秒")
             break
 

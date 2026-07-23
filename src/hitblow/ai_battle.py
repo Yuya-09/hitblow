@@ -6,7 +6,7 @@ from .core import judge
 
 def play_vs_ai(secret, digits):
     print(f"\n 【AI対戦モード】 先に {digits} 桁当てた方の勝ちです！")
-    print("\n ヒントの説明: hint 数字 と入力すると、正解がその数字より大きいか小さいか分かります。")
+    print("\n ヒントの説明: 「hint 数字」 と入力すると、正解がその数字より大きいか小さいか分かります。")
     
     # AIの初期候補リスト（例：3桁なら012〜987の全組み合わせ）
     candidates = ["".join(p) for p in permutations("0123456789", digits)]
