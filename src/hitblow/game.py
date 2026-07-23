@@ -30,7 +30,7 @@ def play(digits=3):
     
     print("ヒントの説明: 「hint 数字」 と入力すると、正解がその数字より大きいか小さいか分かります。")
     tries = 0
-    from playtime import start, elapsed
+    from .playtime import start, elapsed
     start()
     while True:
         guess = input("予想 > ").strip()
